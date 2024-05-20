@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { login } from "../services/auth";
+import { login, getInformacionUsuario } from "../services/auth";
 
 export const Login = () => {
   const router = useRouter();
@@ -24,13 +24,16 @@ export const Login = () => {
       password: usuario.password,
     };
 
-    const userData = await login(body);
-
-    if (userData?.role === "ADM") {
-      router.push("./administrador");
-    } else {
-      router.push("./jugador");
+    const loginExitoso = await login(body);
+    if (loginExitoso) {
+      const userData = await getInformacionUsuario();
+      if (userData?.role === "ADM") {
+        router.push("./administrador");
+      } else {
+        router.push("./jugador");
+      }
     }
+    
   };
 
   return (

@@ -1,27 +1,18 @@
 "use client";
-import { jwtDecode } from "jwt-decode";
 
-export async function login(body: { username: string; password: string }) {
-  const response = await fetch("http://localhost:3000/login/", {
-    method: "POST",
-    body: JSON.stringify(body),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const json = await response.json();
-  if (json?.accessToken) {
-    localStorage.setItem("accessToken", json.accessToken);
-
-    return getAuthenticatedUser();
+import clienteAxios from "./axios";
+export async function login(body: { username: string; password: string }):Promise<boolean> {
+  try {
+    const response = await clienteAxios.post("/login", body );
+    const token = response.data.accessToken;
+    localStorage.setItem("accessToken", token);
+    return true;
+  } catch (e) {
+    return false;
   }
 }
 
-export function getAuthenticatedUser():
-  | { email: string; role: string }
-  | undefined {
-  const token = localStorage.getItem("accessToken");
-  if (token) {
-    return jwtDecode(token);
-  }
+export const getInformacionUsuario = async (): Promise<{ email: string; role: string }> => {
+  const response = await clienteAxios.get("/usuarios/info");
+  return response.data;
 }
