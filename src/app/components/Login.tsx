@@ -9,6 +9,7 @@ export const Login = () => {
     username: "",
     password: "",
   });
+  const [register, setRegister] = useState(false); 
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -36,31 +37,75 @@ export const Login = () => {
     
   };
 
-  return (
-    <form>
-      <h2>Login</h2>
-      {/* <input type="number" onChange={handleChange} /> */}
-      <label htmlFor="username">Usuario</label>
-      <input
-        type="text"
-        name="username"
-        value={usuario.username}
-        onChange={handleChange}
-        className="input"
-      />
-      <label htmlFor="password">Contraseña</label>
-      <input
-        type="text"
-        name="password"
-        value={usuario.password}
-        onChange={handleChange}
-        className="input"
-      />
+  const toggleForms = (val: string) => {
+    setRegister(val == 'register');
+  }
 
-      <br />
-      <button type="button" onClick={handleLogin} className="submit-button">
-        Log In
-      </button>
-    </form>
+  return (
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <div className="container">
+            <div className="toggle-container">
+                <button id="login-toggle" className="btn btn-custom" onClick={() => toggleForms('login')}>Login</button>
+                <button id="register-toggle" className="btn btn-custom" onClick={() => toggleForms('register')}>Register</button>
+            </div>
+            {!register && (
+              <form id="login-form">
+                <h2 className="text-center">Login</h2>
+                <div className="form-group">
+                    <label htmlFor="login-username">Email</label>
+                    <input 
+                      type="text" 
+                      id="login-username" 
+                      className="form-control" 
+                      required 
+                      value={usuario.username}
+                      onChange={handleChange}
+                      />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="login-password">Password</label>
+                    <input 
+                      type="password" 
+                      id="login-password" 
+                      className="form-control" 
+                      value={usuario.password}
+                      onChange={handleChange}
+                      required 
+                    />
+                </div>
+                <button type="button" className="btn btn-custom btn-block  mt-4" onClick={() => handleLogin()}>Login</button>
+            </form>
+            )}
+            {register && (
+              <form id="register-form">
+                <h2 className="text-center">Register</h2>
+                <div className="form-group">
+                    <label htmlFor="register-username">Email</label>
+                    <input 
+                      type="text" 
+                      id="register-username" 
+                      className="form-control" 
+                      value={usuario.username}
+                      onChange={handleChange}
+                      required 
+                      />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="register-password">Password</label>
+                    <input 
+                      type="password" 
+                      id="register-password" 
+                      className="form-control" 
+                      required 
+                      value={usuario.password}
+                      onChange={handleChange}
+                      />
+                </div>
+                <button type="button" className="btn btn-custom btn-block mt-4"  onClick={() => handleLogin()}>Register</button>
+            </form>
+            )}
+            
+        </div>
+    </div>
   );
 };
