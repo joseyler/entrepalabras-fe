@@ -55,18 +55,20 @@ export const Login = () => {
                     <label htmlFor="login-username">Email</label>
                     <input 
                       type="text" 
-                      id="login-username" 
+                      id="username" 
+                      name="username" 
                       className="form-control" 
                       required 
                       value={usuario.username}
-                      onChange={handleChange}
+                      onChange={(e) => handleChange(e)}
                       />
                 </div>
                 <div className="form-group">
                     <label htmlFor="login-password">Password</label>
                     <input 
                       type="password" 
-                      id="login-password" 
+                      id="password" 
+                      name="password" 
                       className="form-control" 
                       value={usuario.password}
                       onChange={handleChange}
@@ -83,7 +85,8 @@ export const Login = () => {
                     <label htmlFor="register-username">Email</label>
                     <input 
                       type="text" 
-                      id="register-username" 
+                      id="username" 
+                      name="username" 
                       className="form-control" 
                       value={usuario.username}
                       onChange={handleChange}
@@ -94,7 +97,8 @@ export const Login = () => {
                     <label htmlFor="register-password">Password</label>
                     <input 
                       type="password" 
-                      id="register-password" 
+                      id="password" 
+                      name="password" 
                       className="form-control" 
                       required 
                       value={usuario.password}

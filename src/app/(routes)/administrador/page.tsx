@@ -17,26 +17,18 @@ async function getAllUsers() {
 export default function Page() {
   const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    async function loadUsers() {
-      const retrievedUsers = await getAllUsers();
-      setUsers(retrievedUsers);
-    }
-    loadUsers();
-  }, []);
+  // useEffect(() => {
+  //   async function loadUsers() {
+  //     const retrievedUsers = await getAllUsers();
+  //     setUsers(retrievedUsers);
+  //   }
+  //   loadUsers();
+  // }, []);
 
   return (
-    <>
-      <h1>Hola Admin</h1>
-      <div>
-        <h2>Listado de Usuarios</h2>
-        <p>ID&emsp;&emsp;Email&emsp;&emsp;Activo/Inactivo</p>
-        {users.map((u: any) => (
-          <p key={u.email}>
-            {u.id}&emsp;{u.email}&emsp;{u.activo ? "Activo" : "Inactivo"}
-          </p>
-        ))}
-      </div>
-    </>
+    <div className="palabra-del-dia">
+      Palabra del día 21-05-2024:
+      <span>PAPAYA</span>
+    </div>
   );
 }

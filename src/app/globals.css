@@ -5,6 +5,51 @@ body {
   /* Papaya color for text */
 }
 
+.header {
+  background: linear-gradient(90deg, #FF8700, #FFA040);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header a {
+  color: #000000;
+  /* Black text for links */
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header a:hover {
+  text-decoration: underline;
+}
+
+.header .user-info {
+  display: flex;
+  align-items: center;
+}
+
+.header .user-info span {
+  margin-right: 15px;
+}
+
+.header .btn-logout {
+  background-color: #000000;
+  /* Black background */
+  color: #FF8700;
+  /* Papaya text */
+  border: 2px solid #FF8700;
+  /* Papaya border */
+}
+
+.header .btn-logout:hover {
+  background-color: #FFA040;
+  /* Slightly lighter papaya on hover */
+  color: #000000;
+  /* Black text */
+}
+
 .container {
   background-color: #000000;
   /* Black background */
@@ -12,6 +57,7 @@ body {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   padding: 40px;
   max-width: 400px;
+  margin-top: 20px;
 }
 
 .form-control {
@@ -66,4 +112,15 @@ body {
 
 .hidden {
   display: none;
+}
+
+.palabra-del-dia {
+  font-size: 32px;
+  margin-left: 25px;
+  margin-top: 20px;
+}
+
+.palabra-del-dia span {
+  font-weight: 900;
+  margin-left: 10px;
 }
