@@ -32,6 +32,7 @@ body {
 
 .header .user-info span {
   margin-right: 15px;
+  color: #000000;
 }
 
 .header .btn-logout {

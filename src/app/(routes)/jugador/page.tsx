@@ -28,6 +28,9 @@ export default function Page() {
   return (
     
     <div className="d-flex flex-column juego justify-content-center align-items-center mt-5">
+      <div className="palabra-del-dia">
+        Palabra del día 21-05-2024
+      </div>
       <div>Intentos 1/10</div>
       <div className="d-flex flex-row justify-content-evenly juego-row">
         <div className="flex-row justify-content-center align-items-center letraJuego letraJuegoPorcentaje ">90%</div>
