@@ -124,3 +124,75 @@ body {
   font-weight: 900;
   margin-left: 10px;
 }
+
+span.user-info {
+  color: #000000;
+}
+
+.letraJuego {
+  width: 90px;
+  height: 70px;
+  margin: 10px;
+  font-size: 48px;
+  font-weight: 900;
+  text-align: center;
+  border: 5px solid #e07600;
+}
+
+div.letraJuego {
+  width: 88px;
+  line-height: 1.5;
+  background-color: #e07600;
+  color: #000000;
+  align-content: center;
+  border-radius: var(--bs-border-radius);
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+div.letraJuegoPorcentaje {
+  width: 100px;
+  line-height: 1.5;
+  font-size: 28px;
+  background-color: #ffd5a5;
+  color: #ad5d01;
+  align-content: center;
+  border-radius: var(--bs-border-radius);
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  text-align: center;
+}
+
+div.letraJuegoMiddle {
+  width: 5px;
+  line-height: 1.5;
+  font-size: 28px;
+  background-color: #ad5d01;
+  color: #ad5d01;
+  align-content: center;
+  border-radius: var(--bs-border-radius);
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  text-align: center;
+  margin-left: 55px;
+  margin-right: 54px;
+}
+
+.letraEditable {
+  background-color: white;
+  border: 5px solid #e07600;
+}
+
+.juegospacer {
+  width: 120px;
+}
+
+.juego-row {
+  width: 800px;
+  margin: 10px 0px;
+}
+
+.btn-enviar {
+  width: 100px;
+  height: 70px;
+  margin: 10px;
+  font-size: 18px;
+  font-weight: 900;
+}
