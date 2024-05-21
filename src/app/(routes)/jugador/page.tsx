@@ -31,7 +31,7 @@ export default function Page() {
       <div className="palabra-del-dia">
         Palabra del día 21-05-2024
       </div>
-      <div>Intentos 1/10</div>
+      <div>Intentos 1/20</div>
       <div className="d-flex flex-row justify-content-evenly juego-row">
         <div className="flex-row justify-content-center align-items-center letraJuego letraJuegoPorcentaje ">90%</div>
         <div className="flex-row justify-content-center align-items-center letraJuego">A</div>
