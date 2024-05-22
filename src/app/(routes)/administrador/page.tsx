@@ -1,5 +1,6 @@
 "use client";
 
+import { withRoles } from "@/app/components/HOC/WithRoles";
 import { useEffect, useState } from "react";
 
 // Ejemplo uso de token
@@ -14,7 +15,7 @@ async function getAllUsers() {
   return json;
 }
 
-export default function Page() {
+const Page = () => {
   const [users, setUsers] = useState([]);
 
   // useEffect(() => {
@@ -32,3 +33,5 @@ export default function Page() {
     </div>
   );
 }
+
+export default withRoles(Page,['Administrador'], '/home')
