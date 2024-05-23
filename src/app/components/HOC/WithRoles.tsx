@@ -1,17 +1,16 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
-function hasRequiredPermissions(requiredPermissions: string[]): boolean {
+function hasRequiredPermissions(requiredPermissions: string[],userPermissions: string[]): boolean {
   // get userPermissions from the redux-store
-  const userPermissions = ['Administrador', 'Usuario']
   return requiredPermissions.some((permission) =>
     userPermissions.includes(permission)
   )
 }
 
-export function withRoles(Component: any, requiredPermissions: string[],goBackRoute: string) {
+export function withRoles(Component: any, requiredPermissions: string[],userPermissions: string[],goBackRoute: string) {
   return function WithRolesWrapper(props: any) {
-    const router = useRouter()
-    const hasPermission = hasRequiredPermissions(requiredPermissions)
+    const router = useRouter();
+    const hasPermission = hasRequiredPermissions(requiredPermissions,userPermissions)
     if (hasPermission) {
       return <Component {...props} />
     } else {
