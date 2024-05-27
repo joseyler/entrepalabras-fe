@@ -1,15 +1,19 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { login, signUp, getInformacionUsuario } from "../services/auth";
+import { UserContext } from "../context/user.context";
 
 export const Login = () => {
   const router = useRouter();
+  const { setUserData } = useContext(UserContext);
   const [usuario, setUsuario] = useState({
     username: "",
     password: "",
   });
+
   const [register, setRegister] = useState(false); 
+  const [showLogin, setShowLogin] = useState(false);
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -28,6 +32,7 @@ export const Login = () => {
     const loginExitoso = await login(body);
     if (loginExitoso) {
       const userData = await getInformacionUsuario();
+      setUserData(userData);
       if (userData?.role === "ADM") {
         router.push("./administrador");
       } else {
@@ -52,14 +57,42 @@ export const Login = () => {
     setRegister(val == 'register');
   }
 
+  const cargarUsuarioLogueado = async () => {
+    try {
+    const userData = await getInformacionUsuario();
+    setUserData(userData);
+      if (userData?.role === "ADM") {
+        router.push("./administrador");
+      } else {
+        router.push("./jugador");
+      }
+    } catch {
+      setShowLogin(true);
+      localStorage.removeItem("accessToken");
+    }
+  }
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      cargarUsuarioLogueado();
+    } else {
+      setShowLogin(true);
+    }
+  }, []);
+
   return (
       <div className="d-flex justify-content-center align-items-center vh-100">
         <div className="container">
+        {!showLogin && (
+          <div className="loader" />
+        )}
+          {showLogin && (
             <div className="toggle-container">
                 <button id="login-toggle" className="btn btn-custom" onClick={() => toggleForms('login')}>Login</button>
                 <button id="register-toggle" className="btn btn-custom" onClick={() => toggleForms('register')}>Register</button>
             </div>
-            {!register && (
+          )}
+            {!register && showLogin && (
               <form id="login-form">
                 <h2 className="text-center">Login</h2>
                 <div className="form-group">
@@ -89,7 +122,7 @@ export const Login = () => {
                 <button type="button" className="btn btn-custom btn-block  mt-4" onClick={() => handleLogin()}>Login</button>
             </form>
             )}
-            {register && (
+            {register && showLogin && (
               <form id="register-form">
                 <h2 className="text-center">Register</h2>
                 <div className="form-group">
@@ -119,7 +152,6 @@ export const Login = () => {
                 <button type="button" className="btn btn-custom btn-block mt-4"  onClick={() => handleRegister()}>Register</button>
             </form>
             )}
-            
         </div>
     </div>
   );

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./globals.css";
+import { UserContextProvider } from "./context/user.context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <UserContextProvider>
+        <body className={inter.className}>{children}</body>
+      </UserContextProvider>
     </html>
   );
 }
