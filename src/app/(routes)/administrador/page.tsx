@@ -1,19 +1,9 @@
 "use client";
-
 import { withRoles } from "@/app/components/HOC/WithRoles";
-import { useEffect, useState } from "react";
+import { getInformacionUsuario } from "@/app/services/auth";
+import clienteAxios from "@/app/services/axios";
+import { useState } from "react";
 
-// Ejemplo uso de token
-async function getAllUsers() {
-  const token = localStorage.getItem("accessToken");
-  const response = await fetch("http://localhost:3000/usuarios/", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  const json = await response.json();
-  return json;
-}
 
 const Page = () => {
   const [users, setUsers] = useState([]);
@@ -34,4 +24,4 @@ const Page = () => {
   );
 }
 
-export default withRoles(Page,['Administrador'],['Administrador'], '/')
+export default withRoles(Page,['ADM'], '/')

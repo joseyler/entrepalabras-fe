@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { login, getInformacionUsuario } from "../services/auth";
+import { login, signUp, getInformacionUsuario } from "../services/auth";
 
 export const Login = () => {
   const router = useRouter();
@@ -34,7 +34,18 @@ export const Login = () => {
         router.push("./jugador");
       }
     }
-    
+  };
+
+  const handleRegister = async () => {
+    const body = {
+      email: usuario.username,
+      password: usuario.password,
+    };
+
+    const registroExitoso = await signUp(body);
+    if (registroExitoso) {
+      toggleForms('login')
+    }
   };
 
   const toggleForms = (val: string) => {
@@ -105,7 +116,7 @@ export const Login = () => {
                       onChange={handleChange}
                       />
                 </div>
-                <button type="button" className="btn btn-custom btn-block mt-4"  onClick={() => handleLogin()}>Register</button>
+                <button type="button" className="btn btn-custom btn-block mt-4"  onClick={() => handleRegister()}>Register</button>
             </form>
             )}
             

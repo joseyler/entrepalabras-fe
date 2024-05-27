@@ -66,4 +66,4 @@ const Page=()=> {
 
 
 
-export default withRoles(Page,['Jugador'],['Administrador'], '/')
+export default withRoles(Page,['USR'], '/')
