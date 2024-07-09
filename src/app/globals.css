@@ -215,3 +215,13 @@ div.letraJuegoMiddle {
     transform: rotate(1turn)
   }
 }
+
+th {
+  padding: .5rem .5rem;
+}
+
+.transparent {
+  background: transparent;
+  border: 0 none;
+  color:#FF8700;
+}
