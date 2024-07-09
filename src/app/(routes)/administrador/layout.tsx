@@ -22,7 +22,7 @@ export default function Layout({
     <header className="header">
           <nav>
               <a href="#palabras">Palabras</a>
-              <a href="#jugadas">Jugadas</a>
+              <a href="/administrador/jugadas">Jugadas</a>
               <a href="#usuarios">Usuarios</a>
           </nav>
           <div className="user-info">
